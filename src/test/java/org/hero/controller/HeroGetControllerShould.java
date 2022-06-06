@@ -8,6 +8,6 @@ class HeroGetControllerShould extends HeroApplicationTestCase {
 
   @Test
   void obtain_all_super_hero() throws Exception {
-    assertRequest("GET", "heroes", 201);
+    assertRequest("GET", "superheros", 201);
   }
 }
