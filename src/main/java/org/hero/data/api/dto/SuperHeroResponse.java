@@ -1,21 +1,15 @@
 package org.hero.data.api.dto;
 
-public final class SuperHeroResponse {
+import java.io.Serializable;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
-  private String identifier;//format uuid
+@Data
+@AllArgsConstructor
+public final class SuperHeroResponse implements Serializable{
+
+  private  String identifier;//format uuid
 
   private String name;
 
-  public SuperHeroResponse(String identifier, String name){
-    this.identifier = identifier;
-    this.name = name;
-  }
-
-  public String identifier(){
-    return this.identifier;
-  };
-
-  public String name(){
-    return this.name;
-  }
 }

@@ -4,11 +4,19 @@ import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
+import org.h2.util.json.JSONArray;
 import org.hero.data.api.HeroDataApiApplication;
+import org.hero.data.api.dto.SuperHeroResponse;
+import org.json.JSONObject;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -78,15 +86,30 @@ public abstract class HeroApplicationTestCase {
     mockMvc
       .perform(request(HttpMethod.valueOf(method), endpoint))
       .andExpect(status().is(expectedStatusCode))
-      .andExpect(content().json(expectedResult().toString()));
+      .andExpect(jsonPath("$").isArray());
+    //toArray().
+    // .toString()
   }
 
-  private Set<String> expectedResult() {
-    Set<java.lang.String> expectedSuperHero = new HashSet<>();
-    expectedSuperHero.add("spiderman");
-    expectedSuperHero.add("enjuto");
+  private List<SuperHeroResponse> obtainListOfSuperHeros() {
+    List<SuperHeroResponse> expectedSuperHero = new ArrayList<>();
+    expectedSuperHero.add(new SuperHeroResponse("identifier1","spiderman"));
+    expectedSuperHero.add(new SuperHeroResponse("identifier2","enjuto"));
 
     return expectedSuperHero;
+  }
+
+  private String expectedResult() {
+    List<SuperHeroResponse> expectedSuperHero = obtainListOfSuperHeros();
+
+    //Converts List items to Map
+    Map<String, String>
+      result = expectedSuperHero.stream().collect(Collectors.toMap(SuperHeroResponse::getIdentifier,
+      SuperHeroResponse::getName));
+
+    JSONObject jsonObject = new JSONObject(result);
+    return jsonObject.toString();
+
   }
 
 
