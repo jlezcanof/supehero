@@ -17,7 +17,8 @@ public final class HeroUpdateController extends ApiController {
 
   @PutMapping(value = "/superheros/{identifier}")
   public ResponseEntity<SuperHeroResponse> update(@PathVariable(value = "identifier") final String identifier,
-                                                  @RequestBody final SuperHeroRequest heroRequest) {
+                                                  @RequestBody final SuperHeroRequest heroRequest)
+    throws HeroException {
 
     throwBadRequestIfParameterIsBlank(identifier);
     throwBadRequestIfIdFormatNotMatches(identifier);
@@ -26,7 +27,7 @@ public final class HeroUpdateController extends ApiController {
       throw new HeroException(HttpStatus.BAD_REQUEST, "Name of super hero is null");
     }
 
-    if (Objects.isNull(this.obtainHero(heroRequest.getName()))) {
+    if (Objects.isNull(this.obtainHeroByName(heroRequest.getName()))) {
       return ResponseEntity.notFound().build();
     }
 

@@ -21,6 +21,7 @@ public abstract  class AbstractController {
   }
 
   protected void throwConflictIfHeroExists(String nameSuperHero) {
-    throw new HeroException(HttpStatus.BAD_REQUEST,String.format("The super hero %s exists", nameSuperHero));
+    throw new HeroException(HttpStatus.CONFLICT, String.format("The super hero %s exists",
+      nameSuperHero));
   }
 }

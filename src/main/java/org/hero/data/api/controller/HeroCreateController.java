@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public final class HeroCreateController extends ApiController{
+public final class HeroCreateController extends ApiController {
 
   @PostMapping(value = "/superheros/")
   public ResponseEntity<SuperHeroResponse> save(@RequestBody final SuperHeroRequest heroRequest) {
@@ -21,10 +21,10 @@ public final class HeroCreateController extends ApiController{
       throw new HeroException(HttpStatus.BAD_REQUEST, "Name of super hero is null");
     }
 
-    if (Objects.nonNull(this.obtainHero(heroRequest.getName()))) {
+    if (Objects.nonNull(this.obtainHeroByName(heroRequest.getName()))) {
       throwConflictIfHeroExists(heroRequest.getName());
     }
 
-    return new ResponseEntity<>(this.addHero(heroRequest), HttpStatus.OK);
+    return new ResponseEntity<>(this.addHero(heroRequest), HttpStatus.CREATED);
   }
 }

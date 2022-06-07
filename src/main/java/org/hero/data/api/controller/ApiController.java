@@ -1,6 +1,5 @@
 package org.hero.data.api.controller;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -52,8 +51,17 @@ public abstract class ApiController extends AbstractController{
 
 
 
-  public SuperHeroResponse obtainHero(String identifier) {
-    //SuperHeroResponse heroResponse = null;
+  public SuperHeroResponse obtainHeroByName(String nameSuperHero) {
+    Optional<SuperHeroResponse> superHeroResponse =
+      data.stream().filter(hero -> hero.getName().equals(nameSuperHero)).findFirst();
+
+    if (superHeroResponse.isPresent()) {
+      return superHeroResponse.get();
+    }
+    return null;
+  }
+
+  public SuperHeroResponse obtainHeroByIdentifier(String identifier) {
     Optional<SuperHeroResponse> superHeroResponse =
       data.stream().filter(hero -> hero.getIdentifier().equals(identifier)).findFirst();
 

@@ -16,7 +16,7 @@ public final class HeroFindOneController extends ApiController {
     throwBadRequestIfParameterIsBlank(identifier);
     throwBadRequestIfIdFormatNotMatches(identifier);
 
-    return new ResponseEntity<>(this.obtainHero(identifier),
+    return new ResponseEntity<>(this.obtainHeroByIdentifier(identifier),
       HttpStatus.OK);
   }
 }
