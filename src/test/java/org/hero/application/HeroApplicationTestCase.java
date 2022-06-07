@@ -6,6 +6,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.util.HashSet;
+import java.util.Set;
 import org.hero.data.api.HeroDataApiApplication;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,7 +78,15 @@ public abstract class HeroApplicationTestCase {
     mockMvc
       .perform(request(HttpMethod.valueOf(method), endpoint))
       .andExpect(status().is(expectedStatusCode))
-      .andExpect(content().string(""));
+      .andExpect(content().json(expectedResult().toString()));
+  }
+
+  private Set<String> expectedResult() {
+    Set<java.lang.String> expectedSuperHero = new HashSet<>();
+    expectedSuperHero.add("spiderman");
+    expectedSuperHero.add("enjuto");
+
+    return expectedSuperHero;
   }
 
 
