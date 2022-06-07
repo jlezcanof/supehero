@@ -1,5 +1,7 @@
 package org.hero.data.api.controller;
 
+import org.hero.data.api.exception.HeroException;
+import org.springframework.http.HttpStatus;
 import org.springframework.util.StringUtils;
 import static org.hero.data.api.properties.RestProperties.PATTERN_UUID;
 
@@ -7,13 +9,13 @@ public abstract  class AbstractController {
 
   protected void throwBadRequestIfParameterIsBlank(String identifier) {
     if (org.apache.commons.lang3.StringUtils.isBlank(identifier)) {
-      throw new IllegalArgumentException("asdfasdfdsa");
+      throw new HeroException(HttpStatus.BAD_REQUEST, "Field identifier is null");
     }
   }
 
   protected void throwBadRequestIfIdFormatNotMatches(String identifier) {
     if (!StringUtils.hasText(identifier) || !PATTERN_UUID.matcher(identifier).matches()) {
-      throw new IllegalArgumentException("asdfasdfdsa");
+      throw new HeroException(HttpStatus.BAD_REQUEST, "Field identifier is not pattern of uuid");
     }
   }
 }
