@@ -1,6 +1,7 @@
 package org.hero.data.api.controller;
 
 
+import java.util.Objects;
 import org.hero.data.api.dto.SuperHeroResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,12 @@ public final class HeroDeleteController extends ApiController{
 
     throwBadRequestIfParameterIsBlank(identifier);
     throwBadRequestIfIdFormatNotMatches(identifier);
+
+    if (Objects.isNull(this.obtainHero(identifier))) {
+      return ResponseEntity.notFound().build();
+    }
+
+    this.deleteHero(identifier);
 
     return new ResponseEntity<>(new SuperHeroResponse(), HttpStatus.NO_CONTENT);
 

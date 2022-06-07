@@ -1,5 +1,6 @@
 package org.hero.data.api.controller;
 
+import java.util.Collections;
 import org.hero.data.api.exception.HeroException;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.StringUtils;
@@ -17,5 +18,9 @@ public abstract  class AbstractController {
     if (!StringUtils.hasText(identifier) || !PATTERN_UUID.matcher(identifier).matches()) {
       throw new HeroException(HttpStatus.BAD_REQUEST, "Field identifier is not pattern of uuid");
     }
+  }
+
+  protected void throwConflictIfHeroExists(String nameSuperHero) {
+    throw new HeroException(HttpStatus.BAD_REQUEST,String.format("The super hero %s exists", nameSuperHero));
   }
 }

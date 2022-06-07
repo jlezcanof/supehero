@@ -21,7 +21,10 @@ public final class HeroCreateController extends ApiController{
       throw new HeroException(HttpStatus.BAD_REQUEST, "Name of super hero is null");
     }
 
+    if (Objects.nonNull(this.obtainHero(heroRequest.getName()))) {
+      throwConflictIfHeroExists(heroRequest.getName());
+    }
 
-    return new ResponseEntity<>(new SuperHeroResponse("identifier", "name"), HttpStatus.OK);
+    return new ResponseEntity<>(this.addHero(heroRequest), HttpStatus.OK);
   }
 }

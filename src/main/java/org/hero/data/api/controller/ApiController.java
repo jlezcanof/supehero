@@ -21,12 +21,15 @@ public abstract class ApiController extends AbstractController{
   }
 
 
-  public void addHero(SuperHeroRequest heroRequest){
-    data.add(new SuperHeroResponse(UUID.randomUUID().toString(), heroRequest.getName()));
+  public SuperHeroResponse addHero(SuperHeroRequest heroRequest){
+    SuperHeroResponse superHeroResponse = new SuperHeroResponse(UUID.randomUUID().toString(),
+      heroRequest.getName());
+    data.add(superHeroResponse);
+    return superHeroResponse;
   }
 
-  public boolean delete(SuperHeroRequest heroRequest){
-    return data.removeIf( hero -> heroRequest.getName().equals(hero.getName()));
+  public boolean deleteHero(String identifier){
+    return data.removeIf( hero -> hero.getIdentifier().equals(identifier));
   }
 
   public void modifyHero(String identifierHero, SuperHeroRequest heroRequest){
