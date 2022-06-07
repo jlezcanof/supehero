@@ -1,5 +1,6 @@
 package org.hero.data.api.controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -10,13 +11,13 @@ import org.hero.data.api.dto.SuperHeroResponse;
 
 public abstract class ApiController extends AbstractController{
 
-  private List<SuperHeroResponse> data = null;
+  private List<SuperHeroResponse> data = new ArrayList<>();
 
   public ApiController() {
-    data = Arrays.asList(new SuperHeroResponse("ea97f659-6ee7-435f-949a-db617664425e",
-      "spiderman"), new SuperHeroResponse("2a1fcb50-da7d-4405-ad03-be566f1c0931 ", "enjuto"),
+    data.addAll(Arrays.asList(new SuperHeroResponse("ea97f659-6ee7-435f-949a-db617664425e",
+        "spiderman"), new SuperHeroResponse("2a1fcb50-da7d-4405-ad03-be566f1c0931 ", "enjuto"),
       new SuperHeroResponse(UUID.randomUUID().toString(), "superman"),
-      new SuperHeroResponse(UUID.randomUUID().toString(), "Manolito el fuerte"));
+      new SuperHeroResponse(UUID.randomUUID().toString(), "Manolito el fuerte")));
   }
 
 

@@ -14,7 +14,7 @@ class HeroCreateControllerShould extends HeroApplicationTestCase {
 
   @Test
   void create_an_non_existing_hero() throws Exception {
-    String body = "{\"name\": \"iron main\"}";
+    String body = "{\"name\": \"iron man\"}";
 
     assertRequestWithBody("POST", "/superheros/", body, 201);
   }
