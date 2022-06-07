@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import org.hamcrest.Matchers;
 import org.hero.data.api.HeroDataApiApplication;
 import org.hero.data.api.dto.SuperHeroResponse;
 import org.json.JSONObject;
@@ -44,6 +45,24 @@ public abstract class HeroApplicationTestCase {
       .perform(get(endpoint))
       .andExpect(status().is(expectedStatusCode))
       .andExpect(response);
+  }
+
+  protected void assertResponse(
+    String endpoint,
+    Integer expectedStatusCode,
+    String keyQueryParam,
+    String valueQueryParam,
+    String expectedResponse) throws Exception {
+    String response = expectedResponse.isEmpty()
+      ? ""
+      : expectedResponse;
+
+
+    mockMvc
+      .perform(get(endpoint).queryParam(keyQueryParam, valueQueryParam))
+      .andExpect(status().is(expectedStatusCode))
+      .andExpect(content().string(Matchers.containsStringIgnoringCase(expectedResponse)));
+
   }
 
   protected void assertResponse(

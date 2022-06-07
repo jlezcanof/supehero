@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 import org.hero.data.api.dto.SuperHeroRequest;
 import org.hero.data.api.dto.SuperHeroResponse;
 
@@ -14,7 +15,9 @@ public abstract class ApiController extends AbstractController{
 
   public ApiController() {
     data = Arrays.asList(new SuperHeroResponse("ea97f659-6ee7-435f-949a-db617664425e",
-      "spiderman"), new SuperHeroResponse("2a1fcb50-da7d-4405-ad03-be566f1c0931 ", "enjuto"));
+      "spiderman"), new SuperHeroResponse("2a1fcb50-da7d-4405-ad03-be566f1c0931 ", "enjuto"),
+      new SuperHeroResponse(UUID.randomUUID().toString(), "superman"),
+      new SuperHeroResponse(UUID.randomUUID().toString(), "Manolito el fuerte"));
   }
 
 
@@ -37,6 +40,14 @@ public abstract class ApiController extends AbstractController{
   public List<SuperHeroResponse> obtainList(){
     return this.data;
   }
+
+  public List<SuperHeroResponse> obtainListCriteria(String nameSuperHero){
+    return this.data.stream().filter( hero -> hero.getName().toLowerCase()
+      .contains(nameSuperHero)).collect(
+      Collectors.toList());
+  }
+
+
 
   public SuperHeroResponse obtainHero(String identifier) {
     //SuperHeroResponse heroResponse = null;
