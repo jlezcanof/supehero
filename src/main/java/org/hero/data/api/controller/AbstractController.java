@@ -7,13 +7,13 @@ public abstract  class AbstractController {
 
   protected void throwBadRequestIfParameterIsBlank(String identifier) {
     if (org.apache.commons.lang3.StringUtils.isBlank(identifier)) {
-
+      throw new IllegalArgumentException("asdfasdfdsa");
     }
   }
 
   protected void throwBadRequestIfIdFormatNotMatches(String identifier) {
     if (!StringUtils.hasText(identifier) || !PATTERN_UUID.matcher(identifier).matches()) {
-
+      throw new IllegalArgumentException("asdfasdfdsa");
     }
   }
 }

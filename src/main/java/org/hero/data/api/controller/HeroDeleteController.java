@@ -9,15 +9,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public final class HeroDeleteController {
+public final class HeroDeleteController extends ApiController{
 
   @DeleteMapping(value = "/superheros/{identifier}")
-  public ResponseEntity<SuperHeroResponse> find(@PathVariable(value = "identifier") final String id) {
+  public ResponseEntity<SuperHeroResponse> delete(@PathVariable(value = "identifier") final String identifier) {
 
-    /*Set<SuperHeroResponse> stringSet = new HashSet<>();
-    stringSet.add(new SuperHeroResponse("identifier", "spiderman"));
-    stringSet.add(new SuperHeroResponse("identifier", "enjuto"));*/
+    throwBadRequestIfParameterIsBlank(identifier);
+    throwBadRequestIfIdFormatNotMatches(identifier);
 
-    return new ResponseEntity<>(new SuperHeroResponse("identifier", "name"), HttpStatus.OK);
+    return new ResponseEntity<>(new SuperHeroResponse(), HttpStatus.NO_CONTENT);
+
+    /*return queryService.find(id).map(r -> this.getHeroResponseDeleted(id))
+        .orElseGet(() -> ResponseEntity.notFound().build());*/
+
   }
 }

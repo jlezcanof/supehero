@@ -13,6 +13,8 @@ public final class HeroFindOneController extends ApiController {
 
   @GetMapping(value = "/superheros/{identifier}")
   public ResponseEntity<SuperHeroResponse> find(@PathVariable(value = "identifier") final String identifier) {
+    throwBadRequestIfParameterIsBlank(identifier);
+    throwBadRequestIfIdFormatNotMatches(identifier);
 
     return new ResponseEntity<>(this.obtainHero(identifier),
       HttpStatus.OK);
