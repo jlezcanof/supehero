@@ -8,12 +8,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
-import org.h2.util.json.JSONArray;
 import org.hero.data.api.HeroDataApiApplication;
 import org.hero.data.api.dto.SuperHeroResponse;
 import org.json.JSONObject;
@@ -87,8 +84,6 @@ public abstract class HeroApplicationTestCase {
       .perform(request(HttpMethod.valueOf(method), endpoint))
       .andExpect(status().is(expectedStatusCode))
       .andExpect(jsonPath("$").isArray());
-    //toArray().
-    // .toString()
   }
 
   private List<SuperHeroResponse> obtainListOfSuperHeros() {

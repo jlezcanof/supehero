@@ -3,7 +3,7 @@ package org.hero.controller;
 import org.hero.application.HeroApplicationTestCase;
 import org.junit.jupiter.api.Test;
 
-class HeroGetControllerShould extends HeroApplicationTestCase {
+class HeroFindCriteriaControllerShould extends HeroApplicationTestCase {
 
 
   @Test
