@@ -47,7 +47,7 @@ public abstract class ApiController extends AbstractController{
 
   public List<SuperHeroResponse> obtainListCriteria(String nameSuperHero){
     return this.data.stream().filter( hero -> hero.getName().toLowerCase()
-      .contains(nameSuperHero)).collect(
+      .contains(nameSuperHero.toLowerCase())).collect(
       Collectors.toList());
   }
 
