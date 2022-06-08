@@ -1,6 +1,6 @@
 databaseChangeLog:
 # ini version
-#  - include:
-#      file: db/changelog/changes/db.change-001.yaml
+  - include:
+      file: db/changelog/changes/db.change-001.yaml
   - include:
       file: db/changelog/changes/db.change-002.yaml

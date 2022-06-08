@@ -83,7 +83,11 @@
                 <artifactId>liquibase-maven-plugin</artifactId>
                 <version>${liquibase.version}</version>
                 <configuration>
-                    <propertyFile>src/main/resources/application.properties</propertyFile>
+<!--                    <propertyFile>src/main/resources/application.properties</propertyFile>-->
+                <url>jdbc:h2:mem:herodb</url>
+                <username>sa</username>
+                <password></password>
+                    <changeLogFile>src/main/resources/db/changelog/changes/changelog-master.yaml</changeLogFile>
                 </configuration>
             </plugin>
         </plugins>
