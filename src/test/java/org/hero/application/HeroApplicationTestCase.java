@@ -106,6 +106,17 @@ public abstract class HeroApplicationTestCase {
       .andExpect(status().is(expectedStatusCode));
   }
 
+  /*protected void assertRequest(
+    String method,
+    String endpoint,
+    Integer expectedStatusCode
+                                 ) throws Exception {
+    mockMvc
+      .perform(request(
+        HttpMethod.valueOf(method), endpoint).contentType(APPLICATION_JSON))
+      .andExpect(status().is(expectedStatusCode));
+  }*/
+
   protected void assertRequest(
     String method,
     String endpoint,
@@ -115,6 +126,16 @@ public abstract class HeroApplicationTestCase {
       .perform(request(HttpMethod.valueOf(method), endpoint))
       .andExpect(status().is(expectedStatusCode))
       .andExpect(jsonPath("$").isArray());
+  }
+
+  protected void assertRequestNoContent(
+    String method,
+    String endpoint,
+    Integer expectedStatusCode
+                              ) throws Exception {
+    mockMvc
+      .perform(request(HttpMethod.valueOf(method), endpoint))
+      .andExpect(status().is(expectedStatusCode));
   }
 
   private List<SuperHeroResponse> obtainListOfSuperHeros() {

@@ -18,7 +18,7 @@ public final class HeroDeleteController extends ApiController{
     throwBadRequestIfParameterIsBlank(identifier);
     throwBadRequestIfIdFormatNotMatches(identifier);
 
-    if (Objects.isNull(this.obtainHeroByName(identifier))) {
+    if (Objects.isNull(this.obtainHeroByIdentifier(identifier))) {
       return ResponseEntity.notFound().build();
     }
 
