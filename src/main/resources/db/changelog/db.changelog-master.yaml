@@ -1,26 +1,6 @@
 databaseChangeLog:
+# ini version
   - include:
-      file: db/changelog/changes/db.change-001a.yaml
-  - changeSet:
-      id: 1
-      author: jmlezcanof
-      failOnError: false
-      validChecksum:
-        - ANY
-      comment: "Creacion de tabla de super heroes"
-      label: "jmlezcanof"
-      change:
-        - createTable:
-            tableName: heros
-            columns:
-              - column:
-                  constraints:
-                    primaryKey: true
-                    primaryKeyName: pk_identifier
-                  name: identifier
-                  type: UUID
-              - column:
-                  name: name
-                  type: VARCHAR(255)
+      file: db/changelog/changes/db.change-001.yaml
   - include:
       file: db/changelog/changes/db.change-002.yaml

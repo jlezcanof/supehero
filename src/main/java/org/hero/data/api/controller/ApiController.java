@@ -17,8 +17,8 @@ public abstract class ApiController extends AbstractController{
     data.addAll(Arrays.asList(
       new SuperHeroResponse("ea97f659-6ee7-435f-949a-db617664425e","spiderman"),
       new SuperHeroResponse("2a1fcb50-da7d-4405-ad03-be566f1c0931 ", "enjuto"),
-      new SuperHeroResponse(UUID.randomUUID().toString(), "superman"),
-      new SuperHeroResponse(UUID.randomUUID().toString(), "Manolito el fuerte")));
+      new SuperHeroResponse("aab626a3-8589-4e86-b93e-5cf3b53258c5", "superman"),
+      new SuperHeroResponse("b763e5d1-698a-4ec3-9b97-2dcccf7d2083", "Manolito el fuerte")));
   }
 
 
