@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: jmlezcanof
+      failOnError: false
+      validChecksum:
+        - ANY
+      comment: "Creacion de tabla de super heroes"
+      label: "jmlezcanof"
+      change:
+        - createTable:
+            tableName: heros
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_identifier
+                  name: identifier
+                  type: UUID
+              - column:
+                  name: name
+                  type: VARCHAR(255)

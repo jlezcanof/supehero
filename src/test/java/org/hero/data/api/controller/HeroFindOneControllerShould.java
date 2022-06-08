@@ -1,6 +1,6 @@
-package org.hero.controller;
+package org.hero.data.api.controller;
 
-import org.hero.application.HeroApplicationTestCase;
+import org.hero.data.api.application.HeroApplicationTestCase;
 import org.junit.jupiter.api.Test;
 
 class HeroFindOneControllerShould extends HeroApplicationTestCase {
