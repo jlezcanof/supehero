@@ -1,4 +1,0 @@
---INSERT INTO heros (identifier, name) VALUES ('ea97f659-6ee7-435f-949a-db617664425e','spiderman');
---INSERT INTO heros (identifier, name) VALUES ('2a1fcb50-da7d-4405-ad03-be566f1c0931', 'enjuto');
---INSERT INTO heros (identifier, name) VALUES ('7ba2463c-f78b-49ae-9d7f-3d45fc5cae85', 'superman');
---INSERT INTO heros (identifier, name) VALUES ('256d1c1b-be22-4c0e-8f41-fcf7271ef73d', 'Manolito el fuerte');

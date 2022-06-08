@@ -1,6 +1,6 @@
 databaseChangeLog:
-#  - include:
-#      file: db/changelog/changes/db.change-001a.yaml
+  - include:
+      file: db/changelog/changes/db.change-001a.yaml
   - changeSet:
       id: 1
       author: jmlezcanof
@@ -22,3 +22,5 @@ databaseChangeLog:
               - column:
                   name: name
                   type: VARCHAR(255)
+  - include:
+      file: db/changelog/changes/db.change-002.yaml
