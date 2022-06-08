@@ -3,14 +3,15 @@ databaseChangeLog:
   - changeSet:
       id: "1"
       author: jmlezcanof
-      failOnError: false
-      validChecksum:
-        - ANY
+      failOnError: true
+#      validChecksum:
+#        - ANY
       comment: "Creacion de tabla de super heroes"
       label: "jmlezcanof"
       change:
         - createTable:
-            tableName: heros
+            schemaName: public
+            tableName: HEROS
             columns:
               - column:
                   constraints:

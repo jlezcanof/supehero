@@ -11,4 +11,6 @@ databaseChangeLog:
         - loadData:
             encoding: UTF-8
             file: db/changelog/changes/db.change-002.csv
-            tableName: heros
+            primaryKey: identifier
+            tableName: HEROS
+            schemaName: public
